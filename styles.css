@@ -1,21 +1,35 @@
 body {
   text-align: center;
+  font-family: "Special Elite", cursive;
+  background-color: pink;
 }
 
 h1 {
   margin: 1% 0;
 }
 
+td {
+  height: 8rem;
+  width: 8rem;
+  border: 3px solid black;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 4rem;
+}
+
 .game {
-  padding: 0 40%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
 }
 
 .X {
   background-color: lightblue;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .O {
   background-color: lightgreen;
+  font-family: "Ubuntu", sans-serif;
 }
 
 button {
@@ -30,11 +44,45 @@ button {
 .resultX,
 .resultO,
 .resultDraw {
-  padding: 0 30%;
   display: none;
 }
 
 .selectPlayer {
-  padding: 0 30%;
   display: block;
+}
+
+.horizontal {
+  background-image: linear-gradient(
+    0deg,
+    transparent calc(50% - 4px),
+    red,
+    transparent calc(50% + 4px)
+  );
+}
+
+.leftDiagonal {
+  background-image: linear-gradient(
+    to bottom left,
+    transparent calc(50% - 4px),
+    red,
+    transparent calc(50% + 4px)
+  );
+}
+
+.rightDiagonal {
+  background-image: linear-gradient(
+    to bottom right,
+    transparent calc(50% - 4px),
+    red,
+    transparent calc(50% + 4px)
+  );
+}
+
+.vertical {
+  background-image: linear-gradient(
+    90deg,
+    transparent calc(50% - 4px),
+    red,
+    transparent calc(50% + 4px)
+  );
 }

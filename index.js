@@ -1,4 +1,5 @@
-var player = "_";
+var player = "";
+var startPlayer = "";
 var start = false;
 var X = [];
 var O = [];
@@ -49,31 +50,33 @@ var streak = [
 ];
 
 $("table").click(function(event) {
-  if (status === "over")
-    alert("Result Declared. Refresh to Start Playing Again.");
-  else {
-    if (event.target.innerText !== "_") alert("Select another cell");
+  if (start === false) {
+    $(".selectPlayer")
+      .fadeOut(100)
+      .fadeIn(100)
+      .fadeOut(100)
+      .fadeIn(100);
+  } else {
+    if (status === "over")
+      alert("Result Declared. Refresh to Start Playing Again.");
     else {
-      $(event.target).text(player);
-      let row = event.target.parentNode.rowIndex;
-      let col = event.target.cellIndex;
-      if (player === "X") {
-        X.push([row, col]);
-        ++count;
-        check(X);
-        player = "O";
-      } else {
-        if (player === "O") {
+      if (event.target.innerText !== "") alert("Select another cell");
+      else {
+        $(event.target).text(player);
+        let row = event.target.parentNode.rowIndex;
+        let col = event.target.cellIndex;
+        if (player === "X") {
+          X.push([row, col]);
+          ++count;
+          check(X);
+          player = "O";
+        } else {
           O.push([row, col]);
           ++count;
           check(O);
+          player = "X";
         }
-        player = "X";
-      }
-      highlight(player);
-      if (start === false) {
-        start = true;
-        $(".selectPlayer").css("display", "none");
+        highlight(player);
       }
     }
   }
@@ -83,29 +86,30 @@ $("button").click(function(event) {
   if (start === false) {
     start = true;
     $(".selectPlayer").css("display", "none");
+    startPlayer = event.target.name;
     player = event.target.name;
     highlight(player);
   }
 });
 
 function highlight(btn) {
-  if (btn === "X") {
-    $("button.X").addClass("highlight");
-    $("button.O").removeClass("highlight");
+  if (count < 9) {
+    if (btn === "X") {
+      $("button.X").addClass("highlight");
+      $("button.O").removeClass("highlight");
+    } else {
+      $("button.O").addClass("highlight");
+      $("button.X").removeClass("highlight");
+    }
+    $("p").text("Next move by : " + btn);
   } else {
-    $("button.O").addClass("highlight");
-    $("button.X").removeClass("highlight");
+    $("button." + startPlayer).removeClass("highlight");
+    $("p").css("display", "none");
   }
-  $("p").text("Next move by : " + btn);
 }
 
 function check(arr) {
   if (arr.length < 3) return;
-
-  if (count === 9) {
-    $(".resultDraw").css("display", "block");
-    status = "over";
-  }
 
   cmb = Combinatorics.combination(arr, 3);
 
@@ -116,7 +120,41 @@ function check(arr) {
         $(".result" + player).css("display", "block");
         $("p").css("display", "none");
         status = "over";
+        strike(a);
+        break;
       }
     }
+  }
+
+  if (status !== "over" && count === 9) {
+    console.log(status);
+    $(".resultDraw").css("display", "block");
+    status = "over";
+  }
+}
+
+function strike(arr) {
+  if (arr[0][0] + 1 === arr[1][0]) {
+    if (arr[0][1] + 1 === arr[1][1]) {
+      $("." + arr[0][0] + " ." + arr[0][1]).addClass("leftDiagonal");
+      $("." + arr[1][0] + " ." + arr[1][1]).addClass("leftDiagonal");
+      $("." + arr[2][0] + " ." + arr[2][1]).addClass("leftDiagonal");
+    } else {
+      if (arr[0][1] - 1 === arr[1][1]) {
+        $("." + arr[0][0] + " ." + arr[0][1]).addClass("rightDiagonal");
+        $("." + arr[1][0] + " ." + arr[1][1]).addClass("rightDiagonal");
+        $("." + arr[2][0] + " ." + arr[2][1]).addClass("rightDiagonal");
+      } else {
+        $("." + arr[0][0] + " ." + arr[0][1]).addClass("vertical");
+        $("." + arr[1][0] + " ." + arr[1][1]).addClass("vertical");
+        $("." + arr[2][0] + " ." + arr[2][1]).addClass("vertical");
+      }
+    }
+  }
+
+  if (arr[0][1] + 1 === arr[1][1]) {
+    $("." + arr[0][0] + " ." + arr[0][1]).addClass("horizontal");
+    $("." + arr[1][0] + " ." + arr[1][1]).addClass("horizontal");
+    $("." + arr[2][0] + " ." + arr[2][1]).addClass("horizontal");
   }
 }
