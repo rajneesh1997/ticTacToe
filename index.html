@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIC TAC TOE</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <h1>Tic-Tac-Toe</h1>
+    <div class="game">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="border border-success">_</td>
+            <td class="border border-success">_</td>
+            <td class="border border-success">_</td>
+          </tr>
+          <tr>
+            <td class="border border-success">_</td>
+            <td class="border border-success">_</td>
+            <td class="border border-success">_</td>
+          </tr>
+          <tr>
+            <td class="border border-success">_</td>
+            <td class="border border-success">_</td>
+            <td class="border border-success">_</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button class="X" name="X">Player X</button>
+    <button class="O" name="O">Player O</button>
+    <p>Next move by :</p>
+
+    <div class="selectPlayer">
+      <h1 style="background-color:green;">Select Player</h1>
+    </div>
+
+    <div class="resultX">
+      <h1 style="background-color:green;">Game Over! Player X won the game!</h1>
+    </div>
+
+    <div class="resultO">
+      <h1 style="background-color:green;">Game Over! Player O won the game!</h1>
+    </div>
+
+    <div class="resultDraw">
+      <h1 style="background-color:green;">Game Over! It's a draw.</h1>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-combinatorics@0.5"></script>
+    <script src="index.js" charset="UTF-8"></script>
+  </body>
+</html>

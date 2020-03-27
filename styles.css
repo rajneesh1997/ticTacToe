@@ -1,0 +1,40 @@
+body {
+  text-align: center;
+}
+
+h1 {
+  margin: 1% 0;
+}
+
+.game {
+  padding: 0 40%;
+}
+
+.X {
+  background-color: lightblue;
+}
+
+.O {
+  background-color: lightgreen;
+}
+
+button {
+  margin: 4px;
+}
+
+.highlight {
+  border-color: yellow;
+  border-width: 10px;
+}
+
+.resultX,
+.resultO,
+.resultDraw {
+  padding: 0 30%;
+  display: none;
+}
+
+.selectPlayer {
+  padding: 0 30%;
+  display: block;
+}
