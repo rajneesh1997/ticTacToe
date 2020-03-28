@@ -1,11 +1,24 @@
+/* HTML Tags*/
 body {
+  padding-bottom: 5%;
   text-align: center;
   font-family: "Special Elite", cursive;
-  background-color: pink;
+  background-image: linear-gradient(
+    125deg,
+    lightblue calc(50% - 4px),
+    lightgreen calc(50% + 4px)
+  );
 }
 
 h1 {
   margin: 1% 0;
+}
+
+/* Table CSS */
+.game {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
 }
 
 td {
@@ -16,41 +29,30 @@ td {
   font-size: 4rem;
 }
 
-.game {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1rem;
-}
-
+/*Button CSS*/
+.O,
 .X {
-  background-color: lightblue;
   font-family: "Ubuntu", sans-serif;
+  margin: 10px;
 }
 
-.O {
-  background-color: lightgreen;
-  font-family: "Ubuntu", sans-serif;
-}
-
-button {
-  margin: 4px;
-}
-
-.highlight {
-  border-color: yellow;
-  border-width: 10px;
-}
-
+/* Div's CSS*/
 .resultX,
 .resultO,
-.resultDraw {
+.resultDraw,
+.reset {
   display: none;
 }
-
 .selectPlayer {
   display: block;
 }
 
+/* Refresh Link CSS*/
+.reset {
+  size: 2rem;
+}
+
+/* Cell-Line-Stroke*/
 .horizontal {
   background-image: linear-gradient(
     0deg,
@@ -85,4 +87,18 @@ button {
     red,
     transparent calc(50% + 4px)
   );
+}
+
+/*For Effects*/
+.glowX {
+  background-image: linear-gradient(125deg, lightgreen, lightgreen);
+}
+
+.glowO {
+  background-image: linear-gradient(125deg, lightblue, lightblue);
+}
+
+.glowWarning {
+  color: white;
+  background-image: linear-gradient(to right, red, red);
 }
